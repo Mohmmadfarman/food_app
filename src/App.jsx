@@ -9,6 +9,8 @@ import Placeorder from './pages/place-order/Placeorder'
 import Footer from './comopents/footer/Footer'
 import { useState } from 'react'
 import Login from './comopents/login/Login'
+import Error from './Error'
+import { Navigate } from 'react-router-dom'
 
 function App() {
 
@@ -20,7 +22,7 @@ function App() {
 
     <>
     {
-      login?<Login setlogin={setlogin}/>:''
+      login && <Login setlogin={setlogin} />
     }
     <div className='app'>
       <Navbar setlogin={setlogin}/>
@@ -28,6 +30,7 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/card' element={<Card/>}/>
         <Route path='/order' element={<Placeorder/>}/>
+        <Route path="*" element={<Navigate to="/" replace />} />
         
       </Routes>
     </div>
